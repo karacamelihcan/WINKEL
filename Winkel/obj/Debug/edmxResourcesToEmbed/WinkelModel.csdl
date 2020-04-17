@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WinkelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="CATEGORYID" />
+    </Key>
+    <Property Name="CATEGORYID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORYNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLPRODUCT_CATEGORY" FromRole="CATEGORY" ToRole="TBLPRODUCT" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBLADMIN">
+    <Key>
+      <PropertyRef Name="ADMINID" />
+    </Key>
+    <Property Name="ADMINID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADMINNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ADMINSURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ADMINEMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ADMINPASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLCITY">
+    <Key>
+      <PropertyRef Name="CITYID" />
+    </Key>
+    <Property Name="CITYID" Type="Byte" Nullable="false" />
+    <Property Name="CITYNAME" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLCUSTOMER" Relationship="Self.FK_TBLCUSTOMER_TBLCITY1" FromRole="TBLCITY" ToRole="TBLCUSTOMER" />
+    <NavigationProperty Name="TBLSELLER" Relationship="Self.FK_TBLSELLER_TBLCITY1" FromRole="TBLCITY" ToRole="TBLSELLER" />
+  </EntityType>
+  <EntityType Name="TBLCUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="CUSTOMERID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMERSURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMEREMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMERPASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMERCITY" Type="Byte" />
+    <Property Name="PHOTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSID" Type="Boolean" />
+    <NavigationProperty Name="TBLCITY" Relationship="Self.FK_TBLCUSTOMER_TBLCITY1" FromRole="TBLCUSTOMER" ToRole="TBLCITY" />
+    <NavigationProperty Name="TBLSTATUS" Relationship="Self.FK_TBLCUSTOMER_TBLSTATUS" FromRole="TBLCUSTOMER" ToRole="TBLSTATUS" />
+    <NavigationProperty Name="TBLSALES" Relationship="Self.FK_TBLSALES_TBLCUSTOMER1" FromRole="TBLCUSTOMER" ToRole="TBLSALES" />
+  </EntityType>
+  <EntityType Name="TBLNOTIFICATION">
+    <Key>
+      <PropertyRef Name="NOTFID" />
+    </Key>
+    <Property Name="NOTFID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SALESID" Type="Int16" />
+    <Property Name="READID" Type="Boolean" />
+    <NavigationProperty Name="TBLREAD" Relationship="Self.FK_TBLNOTIFICATION_TBLREAD" FromRole="TBLNOTIFICATION" ToRole="TBLREAD" />
+    <NavigationProperty Name="TBLSALES" Relationship="Self.FK_TBLNOTIFICATION_TBLSALES" FromRole="TBLNOTIFICATION" ToRole="TBLSALES" />
+  </EntityType>
+  <EntityType Name="TBLPRODUCT">
+    <Key>
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="PRODUCTID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORYID" Type="Byte" />
+    <Property Name="PRODUCTCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCTVOLUME" Type="Int16" />
+    <Property Name="UNITID" Type="Byte" />
+    <Property Name="SELLERID" Type="Int16" />
+    <Property Name="STOCKNUMBER" Type="Int16" />
+    <Property Name="PRICE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PHOTO" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSID" Type="Boolean" />
+    <Property Name="STOCKID" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY" Relationship="Self.FK_TBLPRODUCT_CATEGORY" FromRole="TBLPRODUCT" ToRole="CATEGORY" />
+    <NavigationProperty Name="TBLSELLER" Relationship="Self.FK_TBLPRODUCT_TBLSELLER" FromRole="TBLPRODUCT" ToRole="TBLSELLER" />
+    <NavigationProperty Name="TBLSTATUS" Relationship="Self.FK_TBLPRODUCT_TBLSTATUS" FromRole="TBLPRODUCT" ToRole="TBLSTATUS" />
+    <NavigationProperty Name="TBLSTOCKSTATUS" Relationship="Self.FK_TBLPRODUCT_TBLSTOCKSTATUS" FromRole="TBLPRODUCT" ToRole="TBLSTOCKSTATUS" />
+    <NavigationProperty Name="TBLUNIT" Relationship="Self.FK_TBLPRODUCT_TBLUNIT1" FromRole="TBLPRODUCT" ToRole="TBLUNIT" />
+    <NavigationProperty Name="TBLSALES" Relationship="Self.FK_TBLSALES_TBLPRODUCT1" FromRole="TBLPRODUCT" ToRole="TBLSALES" />
+  </EntityType>
+  <EntityType Name="TBLREAD">
+    <Key>
+      <PropertyRef Name="READID" />
+    </Key>
+    <Property Name="READID" Type="Boolean" Nullable="false" />
+    <Property Name="READSTATUS" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLNOTIFICATION" Relationship="Self.FK_TBLNOTIFICATION_TBLREAD" FromRole="TBLREAD" ToRole="TBLNOTIFICATION" />
+  </EntityType>
+  <EntityType Name="TBLSALES">
+    <Key>
+      <PropertyRef Name="SALESID" />
+    </Key>
+    <Property Name="SALESID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SELLERID" Type="Int16" />
+    <Property Name="CUSTOMERID" Type="Int16" />
+    <Property Name="PRODUCTID" Type="Int16" />
+    <Property Name="SALESNUMBER" Type="Byte" />
+    <Property Name="COST" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="TBLCUSTOMER" Relationship="Self.FK_TBLSALES_TBLCUSTOMER1" FromRole="TBLSALES" ToRole="TBLCUSTOMER" />
+    <NavigationProperty Name="TBLNOTIFICATION" Relationship="Self.FK_TBLNOTIFICATION_TBLSALES" FromRole="TBLSALES" ToRole="TBLNOTIFICATION" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLSALES_TBLPRODUCT1" FromRole="TBLSALES" ToRole="TBLPRODUCT" />
+    <NavigationProperty Name="TBLSELLER" Relationship="Self.FK_TBLSALES_TBLSELLER" FromRole="TBLSALES" ToRole="TBLSELLER" />
+  </EntityType>
+  <EntityType Name="TBLSELLER">
+    <Key>
+      <PropertyRef Name="SELLERID" />
+    </Key>
+    <Property Name="SELLERID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SELLERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SELLERSURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SELLEREMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SELLERPASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SELLERCITY" Type="Byte" />
+    <Property Name="PHOTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSID" Type="Boolean" />
+    <NavigationProperty Name="TBLCITY" Relationship="Self.FK_TBLSELLER_TBLCITY1" FromRole="TBLSELLER" ToRole="TBLCITY" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLPRODUCT_TBLSELLER" FromRole="TBLSELLER" ToRole="TBLPRODUCT" />
+    <NavigationProperty Name="TBLSALES" Relationship="Self.FK_TBLSALES_TBLSELLER" FromRole="TBLSELLER" ToRole="TBLSALES" />
+    <NavigationProperty Name="TBLSTATUS" Relationship="Self.FK_TBLSELLER_TBLSTATUS" FromRole="TBLSELLER" ToRole="TBLSTATUS" />
+  </EntityType>
+  <EntityType Name="TBLSTATUS">
+    <Key>
+      <PropertyRef Name="STATUSID" />
+    </Key>
+    <Property Name="STATUSID" Type="Boolean" Nullable="false" />
+    <Property Name="STATUSNAME" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLCUSTOMER" Relationship="Self.FK_TBLCUSTOMER_TBLSTATUS" FromRole="TBLSTATUS" ToRole="TBLCUSTOMER" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLPRODUCT_TBLSTATUS" FromRole="TBLSTATUS" ToRole="TBLPRODUCT" />
+    <NavigationProperty Name="TBLSELLER" Relationship="Self.FK_TBLSELLER_TBLSTATUS" FromRole="TBLSTATUS" ToRole="TBLSELLER" />
+  </EntityType>
+  <EntityType Name="TBLSTOCKSTATUS">
+    <Key>
+      <PropertyRef Name="STOCKID" />
+    </Key>
+    <Property Name="STOCKID" Type="Boolean" Nullable="false" />
+    <Property Name="STOCKSTATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLPRODUCT_TBLSTOCKSTATUS" FromRole="TBLSTOCKSTATUS" ToRole="TBLPRODUCT" />
+  </EntityType>
+  <EntityType Name="TBLUNIT">
+    <Key>
+      <PropertyRef Name="UNITID" />
+    </Key>
+    <Property Name="UNITID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UNITNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLPRODUCT" Relationship="Self.FK_TBLPRODUCT_TBLUNIT1" FromRole="TBLUNIT" ToRole="TBLPRODUCT" />
+  </EntityType>
+  <Association Name="FK_TBLPRODUCT_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="CATEGORYID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="CATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLCUSTOMER_TBLCITY1">
+    <End Role="TBLCITY" Type="Self.TBLCITY" Multiplicity="0..1" />
+    <End Role="TBLCUSTOMER" Type="Self.TBLCUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCITY">
+        <PropertyRef Name="CITYID" />
+      </Principal>
+      <Dependent Role="TBLCUSTOMER">
+        <PropertyRef Name="CUSTOMERCITY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSELLER_TBLCITY1">
+    <End Role="TBLCITY" Type="Self.TBLCITY" Multiplicity="0..1" />
+    <End Role="TBLSELLER" Type="Self.TBLSELLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCITY">
+        <PropertyRef Name="CITYID" />
+      </Principal>
+      <Dependent Role="TBLSELLER">
+        <PropertyRef Name="SELLERCITY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLCUSTOMER_TBLSTATUS">
+    <End Role="TBLSTATUS" Type="Self.TBLSTATUS" Multiplicity="0..1" />
+    <End Role="TBLCUSTOMER" Type="Self.TBLCUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSTATUS">
+        <PropertyRef Name="STATUSID" />
+      </Principal>
+      <Dependent Role="TBLCUSTOMER">
+        <PropertyRef Name="STATUSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSALES_TBLCUSTOMER1">
+    <End Role="TBLCUSTOMER" Type="Self.TBLCUSTOMER" Multiplicity="0..1" />
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCUSTOMER">
+        <PropertyRef Name="CUSTOMERID" />
+      </Principal>
+      <Dependent Role="TBLSALES">
+        <PropertyRef Name="CUSTOMERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLNOTIFICATION_TBLREAD">
+    <End Role="TBLREAD" Type="Self.TBLREAD" Multiplicity="0..1" />
+    <End Role="TBLNOTIFICATION" Type="Self.TBLNOTIFICATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLREAD">
+        <PropertyRef Name="READID" />
+      </Principal>
+      <Dependent Role="TBLNOTIFICATION">
+        <PropertyRef Name="READID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLNOTIFICATION_TBLSALES">
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="0..1" />
+    <End Role="TBLNOTIFICATION" Type="Self.TBLNOTIFICATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSALES">
+        <PropertyRef Name="SALESID" />
+      </Principal>
+      <Dependent Role="TBLNOTIFICATION">
+        <PropertyRef Name="SALESID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLPRODUCT_TBLSELLER">
+    <End Role="TBLSELLER" Type="Self.TBLSELLER" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSELLER">
+        <PropertyRef Name="SELLERID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="SELLERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLPRODUCT_TBLSTATUS">
+    <End Role="TBLSTATUS" Type="Self.TBLSTATUS" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSTATUS">
+        <PropertyRef Name="STATUSID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="STATUSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLPRODUCT_TBLSTOCKSTATUS">
+    <End Role="TBLSTOCKSTATUS" Type="Self.TBLSTOCKSTATUS" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSTOCKSTATUS">
+        <PropertyRef Name="STOCKID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="STOCKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLPRODUCT_TBLUNIT1">
+    <End Role="TBLUNIT" Type="Self.TBLUNIT" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLUNIT">
+        <PropertyRef Name="UNITID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="UNITID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSALES_TBLPRODUCT1">
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="0..1" />
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLPRODUCT">
+        <PropertyRef Name="PRODUCTID" />
+      </Principal>
+      <Dependent Role="TBLSALES">
+        <PropertyRef Name="PRODUCTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSALES_TBLSELLER">
+    <End Role="TBLSELLER" Type="Self.TBLSELLER" Multiplicity="0..1" />
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSELLER">
+        <PropertyRef Name="SELLERID" />
+      </Principal>
+      <Dependent Role="TBLSALES">
+        <PropertyRef Name="SELLERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSELLER_TBLSTATUS">
+    <End Role="TBLSTATUS" Type="Self.TBLSTATUS" Multiplicity="0..1" />
+    <End Role="TBLSELLER" Type="Self.TBLSELLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSTATUS">
+        <PropertyRef Name="STATUSID" />
+      </Principal>
+      <Dependent Role="TBLSELLER">
+        <PropertyRef Name="STATUSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WinkelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBLADMIN" EntityType="Self.TBLADMIN" />
+    <EntitySet Name="TBLCITY" EntityType="Self.TBLCITY" />
+    <EntitySet Name="TBLCUSTOMER" EntityType="Self.TBLCUSTOMER" />
+    <EntitySet Name="TBLNOTIFICATION" EntityType="Self.TBLNOTIFICATION" />
+    <EntitySet Name="TBLPRODUCT" EntityType="Self.TBLPRODUCT" />
+    <EntitySet Name="TBLREAD" EntityType="Self.TBLREAD" />
+    <EntitySet Name="TBLSALES" EntityType="Self.TBLSALES" />
+    <EntitySet Name="TBLSELLER" EntityType="Self.TBLSELLER" />
+    <EntitySet Name="TBLSTATUS" EntityType="Self.TBLSTATUS" />
+    <EntitySet Name="TBLSTOCKSTATUS" EntityType="Self.TBLSTOCKSTATUS" />
+    <EntitySet Name="TBLUNIT" EntityType="Self.TBLUNIT" />
+    <AssociationSet Name="FK_TBLPRODUCT_CATEGORY" Association="Self.FK_TBLPRODUCT_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLCUSTOMER_TBLCITY1" Association="Self.FK_TBLCUSTOMER_TBLCITY1">
+      <End Role="TBLCITY" EntitySet="TBLCITY" />
+      <End Role="TBLCUSTOMER" EntitySet="TBLCUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSELLER_TBLCITY1" Association="Self.FK_TBLSELLER_TBLCITY1">
+      <End Role="TBLCITY" EntitySet="TBLCITY" />
+      <End Role="TBLSELLER" EntitySet="TBLSELLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLCUSTOMER_TBLSTATUS" Association="Self.FK_TBLCUSTOMER_TBLSTATUS">
+      <End Role="TBLSTATUS" EntitySet="TBLSTATUS" />
+      <End Role="TBLCUSTOMER" EntitySet="TBLCUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSALES_TBLCUSTOMER1" Association="Self.FK_TBLSALES_TBLCUSTOMER1">
+      <End Role="TBLCUSTOMER" EntitySet="TBLCUSTOMER" />
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLNOTIFICATION_TBLREAD" Association="Self.FK_TBLNOTIFICATION_TBLREAD">
+      <End Role="TBLREAD" EntitySet="TBLREAD" />
+      <End Role="TBLNOTIFICATION" EntitySet="TBLNOTIFICATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLNOTIFICATION_TBLSALES" Association="Self.FK_TBLNOTIFICATION_TBLSALES">
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+      <End Role="TBLNOTIFICATION" EntitySet="TBLNOTIFICATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLPRODUCT_TBLSELLER" Association="Self.FK_TBLPRODUCT_TBLSELLER">
+      <End Role="TBLSELLER" EntitySet="TBLSELLER" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLPRODUCT_TBLSTATUS" Association="Self.FK_TBLPRODUCT_TBLSTATUS">
+      <End Role="TBLSTATUS" EntitySet="TBLSTATUS" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLPRODUCT_TBLSTOCKSTATUS" Association="Self.FK_TBLPRODUCT_TBLSTOCKSTATUS">
+      <End Role="TBLSTOCKSTATUS" EntitySet="TBLSTOCKSTATUS" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLPRODUCT_TBLUNIT1" Association="Self.FK_TBLPRODUCT_TBLUNIT1">
+      <End Role="TBLUNIT" EntitySet="TBLUNIT" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSALES_TBLPRODUCT1" Association="Self.FK_TBLSALES_TBLPRODUCT1">
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSALES_TBLSELLER" Association="Self.FK_TBLSALES_TBLSELLER">
+      <End Role="TBLSELLER" EntitySet="TBLSELLER" />
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSELLER_TBLSTATUS" Association="Self.FK_TBLSELLER_TBLSTATUS">
+      <End Role="TBLSTATUS" EntitySet="TBLSTATUS" />
+      <End Role="TBLSELLER" EntitySet="TBLSELLER" />
+    </AssociationSet>
+    <FunctionImport Name="ADDCATEGORY">
+      <Parameter Name="CATEGORYNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADDCUSTOMER">
+      <Parameter Name="CUSTOMERNAME" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERSURNAME" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMEREMAIL" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERPASSWORD" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERCITY" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERPHOTO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADDPRODUCT">
+      <Parameter Name="CATEGORYNAME" Mode="In" Type="String" />
+      <Parameter Name="PRODUCTCODE" Mode="In" Type="String" />
+      <Parameter Name="PRODUCTNAME" Mode="In" Type="String" />
+      <Parameter Name="PRODUCTVOLUME" Mode="In" Type="Int16" />
+      <Parameter Name="UNIT" Mode="In" Type="String" />
+      <Parameter Name="SELLERID" Mode="In" Type="Int16" />
+      <Parameter Name="STOCKNUMBER" Mode="In" Type="Int16" />
+      <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+      <Parameter Name="PHOTO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADDSALES">
+      <Parameter Name="SELLERNAME" Mode="In" Type="String" />
+      <Parameter Name="SELLERSURNAME" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERNAME" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERSURNAME" Mode="In" Type="String" />
+      <Parameter Name="PRODUCTID" Mode="In" Type="Int16" />
+      <Parameter Name="SALESNUMBER" Mode="In" Type="Byte" />
+      <Parameter Name="COST" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="ADDSELLER">
+      <Parameter Name="SELLERNAME" Mode="In" Type="String" />
+      <Parameter Name="SELLERSURNAME" Mode="In" Type="String" />
+      <Parameter Name="SELLEREMAIL" Mode="In" Type="String" />
+      <Parameter Name="SELLERPASSWORD" Mode="In" Type="String" />
+      <Parameter Name="SELLERCITY" Mode="In" Type="String" />
+      <Parameter Name="SELLERPHOTO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DELETECUSTOMER">
+      <Parameter Name="CUSTOMERID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="DELETEPRODUCT">
+      <Parameter Name="PRODUCTID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="DELETESELLER">
+      <Parameter Name="SELLERID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="LISTCATEGORY" ReturnType="Collection(String)" />
+    <FunctionImport Name="LISTCUSTOMER" ReturnType="Collection(WinkelModel.LISTCUSTOMER_Result)" />
+    <FunctionImport Name="LISTNOTFSELLER" ReturnType="Collection(WinkelModel.LISTNOTFSELLER_Result)">
+      <Parameter Name="SELLERNAME" Mode="In" Type="String" />
+      <Parameter Name="SELLERSURNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LISTPRODUCTACTIVE" ReturnType="Collection(WinkelModel.LISTPRODUCTACTIVE_Result)" />
+    <FunctionImport Name="LISTPRODUCTALL" ReturnType="Collection(WinkelModel.LISTPRODUCTALL_Result)" />
+    <FunctionImport Name="LISTSALES" ReturnType="Collection(WinkelModel.LISTSALES_Result)" />
+    <FunctionImport Name="LISTSALESFORCUSTOMER" ReturnType="Collection(WinkelModel.LISTSALESFORCUSTOMER_Result)">
+      <Parameter Name="CUSTOMERNAME" Mode="In" Type="String" />
+      <Parameter Name="CUSTOMERSURNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LISTSALESFORSELLER" ReturnType="Collection(WinkelModel.LISTSALESFORSELLER_Result)">
+      <Parameter Name="SELLERNAME" Mode="In" Type="String" />
+      <Parameter Name="SELLERSURNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LISTSELLER" ReturnType="Collection(WinkelModel.LISTSELLER_Result)" />
+    <FunctionImport Name="READNOTIFICATION">
+      <Parameter Name="NOTFID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SEARCHCUSTOMER" ReturnType="Collection(WinkelModel.SEARCHCUSTOMER_Result)">
+      <Parameter Name="SEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SEARCHPRODUCT" ReturnType="Collection(WinkelModel.SEARCHPRODUCT_Result)">
+      <Parameter Name="SEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SEARCHSELLER" ReturnType="Collection(WinkelModel.SEARCHSELLER_Result)">
+      <Parameter Name="SEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WinkelModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WinkelModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="LISTCUSTOMER_Result">
+    <Property Type="Int16" Name="MÜŞTERİ_ID" Nullable="false" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞİFRE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞEHİR" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="LISTNOTFSELLER_Result">
+    <Property Type="Int16" Name="ID" Nullable="false" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_ŞEHRİ" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="KATEGORİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Byte" Name="SATIŞ_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="TUTAR" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="OKUNMA_DURUMU" Nullable="true" MaxLength="6" />
+  </ComplexType>
+  <ComplexType Name="LISTPRODUCTACTIVE_Result">
+    <Property Type="Int16" Name="ÜRÜN_ID" Nullable="false" />
+    <Property Type="String" Name="ÜRÜN_KATEGORİSİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="Int16" Name="STOK_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="SATIŞ_FİYATI" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="LISTPRODUCTALL_Result">
+    <Property Type="Int16" Name="ÜRÜN_ID" Nullable="false" />
+    <Property Type="String" Name="ÜRÜN_KATEGORİSİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="Int16" Name="STOK_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="SATIŞ_FİYATI" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="LISTSALES_Result">
+    <Property Type="Int16" Name="SATIŞ_ID_" Nullable="false" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="KATEGORİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="Byte" Name="SATIŞ_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="TUTAR" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="LISTSALESFORCUSTOMER_Result">
+    <Property Type="Int16" Name="SATIŞ_ID_" Nullable="false" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="KATEGORİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="Byte" Name="SATIŞ_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="TUTAR" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="LISTSALESFORSELLER_Result">
+    <Property Type="Int16" Name="SATIŞ_ID_" Nullable="false" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="KATEGORİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="Byte" Name="SATIŞ_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="TUTAR" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="LISTSELLER_Result">
+    <Property Type="Int16" Name="SATICI_ID_" Nullable="false" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ŞİFRE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞEHİR" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SEARCHCUSTOMER_Result">
+    <Property Type="Int16" Name="MÜŞTERİ_ID" Nullable="false" />
+    <Property Type="String" Name="MÜŞTERİ_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MÜŞTERİ_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞİFRE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞEHİR" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SEARCHPRODUCT_Result">
+    <Property Type="Int16" Name="ÜRÜN_ID" Nullable="false" />
+    <Property Type="String" Name="ÜRÜN_KATEGORİSİ" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ÜRÜN_KODU" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ÜRÜN_ADI" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="HACİM" Nullable="true" />
+    <Property Type="String" Name="BİRİM" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="Int16" Name="STOK_ADETİ" Nullable="true" />
+    <Property Type="Decimal" Name="SATIŞ_FİYATI" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="SEARCHSELLER_Result">
+    <Property Type="Int16" Name="SATICI_ID_" Nullable="false" />
+    <Property Type="String" Name="SATICI_ADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="SATICI_SOYADI" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ŞİFRE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ŞEHİR" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="FOTOĞRAF" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WinkelModelStoreContainer" CdmEntityContainer="WinkelEntities">
+    <EntitySetMapping Name="CATEGORY">
+      <EntityTypeMapping TypeName="WinkelModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WinkelModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLADMIN">
+      <EntityTypeMapping TypeName="WinkelModel.TBLADMIN">
+        <MappingFragment StoreEntitySet="TBLADMIN">
+          <ScalarProperty Name="ADMINID" ColumnName="ADMINID" />
+          <ScalarProperty Name="ADMINNAME" ColumnName="ADMINNAME" />
+          <ScalarProperty Name="ADMINSURNAME" ColumnName="ADMINSURNAME" />
+          <ScalarProperty Name="ADMINEMAIL" ColumnName="ADMINEMAIL" />
+          <ScalarProperty Name="ADMINPASSWORD" ColumnName="ADMINPASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCITY">
+      <EntityTypeMapping TypeName="WinkelModel.TBLCITY">
+        <MappingFragment StoreEntitySet="TBLCITY">
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="CITYNAME" ColumnName="CITYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCUSTOMER">
+      <EntityTypeMapping TypeName="WinkelModel.TBLCUSTOMER">
+        <MappingFragment StoreEntitySet="TBLCUSTOMER">
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+          <ScalarProperty Name="CUSTOMERSURNAME" ColumnName="CUSTOMERSURNAME" />
+          <ScalarProperty Name="CUSTOMEREMAIL" ColumnName="CUSTOMEREMAIL" />
+          <ScalarProperty Name="CUSTOMERPASSWORD" ColumnName="CUSTOMERPASSWORD" />
+          <ScalarProperty Name="CUSTOMERCITY" ColumnName="CUSTOMERCITY" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="STATUSID" ColumnName="STATUSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLNOTIFICATION">
+      <EntityTypeMapping TypeName="WinkelModel.TBLNOTIFICATION">
+        <MappingFragment StoreEntitySet="TBLNOTIFICATION">
+          <ScalarProperty Name="NOTFID" ColumnName="NOTFID" />
+          <ScalarProperty Name="SALESID" ColumnName="SALESID" />
+          <ScalarProperty Name="READID" ColumnName="READID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLPRODUCT">
+      <EntityTypeMapping TypeName="WinkelModel.TBLPRODUCT">
+        <MappingFragment StoreEntitySet="TBLPRODUCT">
+          <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="PRODUCTCODE" ColumnName="PRODUCTCODE" />
+          <ScalarProperty Name="PRODUCTNAME" ColumnName="PRODUCTNAME" />
+          <ScalarProperty Name="PRODUCTVOLUME" ColumnName="PRODUCTVOLUME" />
+          <ScalarProperty Name="UNITID" ColumnName="UNITID" />
+          <ScalarProperty Name="SELLERID" ColumnName="SELLERID" />
+          <ScalarProperty Name="STOCKNUMBER" ColumnName="STOCKNUMBER" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="STATUSID" ColumnName="STATUSID" />
+          <ScalarProperty Name="STOCKID" ColumnName="STOCKID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLREAD">
+      <EntityTypeMapping TypeName="WinkelModel.TBLREAD">
+        <MappingFragment StoreEntitySet="TBLREAD">
+          <ScalarProperty Name="READID" ColumnName="READID" />
+          <ScalarProperty Name="READSTATUS" ColumnName="READSTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSALES">
+      <EntityTypeMapping TypeName="WinkelModel.TBLSALES">
+        <MappingFragment StoreEntitySet="TBLSALES">
+          <ScalarProperty Name="SALESID" ColumnName="SALESID" />
+          <ScalarProperty Name="SELLERID" ColumnName="SELLERID" />
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+          <ScalarProperty Name="SALESNUMBER" ColumnName="SALESNUMBER" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSELLER">
+      <EntityTypeMapping TypeName="WinkelModel.TBLSELLER">
+        <MappingFragment StoreEntitySet="TBLSELLER">
+          <ScalarProperty Name="SELLERID" ColumnName="SELLERID" />
+          <ScalarProperty Name="SELLERNAME" ColumnName="SELLERNAME" />
+          <ScalarProperty Name="SELLERSURNAME" ColumnName="SELLERSURNAME" />
+          <ScalarProperty Name="SELLEREMAIL" ColumnName="SELLEREMAIL" />
+          <ScalarProperty Name="SELLERPASSWORD" ColumnName="SELLERPASSWORD" />
+          <ScalarProperty Name="SELLERCITY" ColumnName="SELLERCITY" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="STATUSID" ColumnName="STATUSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTATUS">
+      <EntityTypeMapping TypeName="WinkelModel.TBLSTATUS">
+        <MappingFragment StoreEntitySet="TBLSTATUS">
+          <ScalarProperty Name="STATUSID" ColumnName="STATUSID" />
+          <ScalarProperty Name="STATUSNAME" ColumnName="STATUSNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTOCKSTATUS">
+      <EntityTypeMapping TypeName="WinkelModel.TBLSTOCKSTATUS">
+        <MappingFragment StoreEntitySet="TBLSTOCKSTATUS">
+          <ScalarProperty Name="STOCKID" ColumnName="STOCKID" />
+          <ScalarProperty Name="STOCKSTATUS" ColumnName="STOCKSTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLUNIT">
+      <EntityTypeMapping TypeName="WinkelModel.TBLUNIT">
+        <MappingFragment StoreEntitySet="TBLUNIT">
+          <ScalarProperty Name="UNITID" ColumnName="UNITID" />
+          <ScalarProperty Name="UNITNAME" ColumnName="UNITNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ADDCATEGORY" FunctionName="WinkelModel.Store.ADDCATEGORY" />
+    <FunctionImportMapping FunctionImportName="ADDCUSTOMER" FunctionName="WinkelModel.Store.ADDCUSTOMER" />
+    <FunctionImportMapping FunctionImportName="ADDPRODUCT" FunctionName="WinkelModel.Store.ADDPRODUCT" />
+    <FunctionImportMapping FunctionImportName="ADDSALES" FunctionName="WinkelModel.Store.ADDSALES" />
+    <FunctionImportMapping FunctionImportName="ADDSELLER" FunctionName="WinkelModel.Store.ADDSELLER" />
+    <FunctionImportMapping FunctionImportName="DELETECUSTOMER" FunctionName="WinkelModel.Store.DELETECUSTOMER" />
+    <FunctionImportMapping FunctionImportName="DELETEPRODUCT" FunctionName="WinkelModel.Store.DELETEPRODUCT" />
+    <FunctionImportMapping FunctionImportName="DELETESELLER" FunctionName="WinkelModel.Store.DELETESELLER" />
+    <FunctionImportMapping FunctionImportName="LISTCATEGORY" FunctionName="WinkelModel.Store.LISTCATEGORY" />
+    <FunctionImportMapping FunctionImportName="LISTCUSTOMER" FunctionName="WinkelModel.Store.LISTCUSTOMER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTCUSTOMER_Result">
+          <ScalarProperty Name="MÜŞTERİ_ID" ColumnName="MÜŞTERİ ID" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ŞİFRE" ColumnName="ŞİFRE" />
+          <ScalarProperty Name="ŞEHİR" ColumnName="ŞEHİR" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTNOTFSELLER" FunctionName="WinkelModel.Store.LISTNOTFSELLER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTNOTFSELLER_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MÜŞTERİ_ŞEHRİ" ColumnName="MÜŞTERİ ŞEHRİ" />
+          <ScalarProperty Name="KATEGORİ" ColumnName="KATEGORİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="SATIŞ_ADETİ" ColumnName="SATIŞ ADETİ" />
+          <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+          <ScalarProperty Name="OKUNMA_DURUMU" ColumnName="OKUNMA DURUMU" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTPRODUCTACTIVE" FunctionName="WinkelModel.Store.LISTPRODUCTACTIVE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTPRODUCTACTIVE_Result">
+          <ScalarProperty Name="ÜRÜN_ID" ColumnName="ÜRÜN ID" />
+          <ScalarProperty Name="ÜRÜN_KATEGORİSİ" ColumnName="ÜRÜN KATEGORİSİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="STOK_ADETİ" ColumnName="STOK ADETİ" />
+          <ScalarProperty Name="SATIŞ_FİYATI" ColumnName="SATIŞ FİYATI" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTPRODUCTALL" FunctionName="WinkelModel.Store.LISTPRODUCTALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTPRODUCTALL_Result">
+          <ScalarProperty Name="ÜRÜN_ID" ColumnName="ÜRÜN ID" />
+          <ScalarProperty Name="ÜRÜN_KATEGORİSİ" ColumnName="ÜRÜN KATEGORİSİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="STOK_ADETİ" ColumnName="STOK ADETİ" />
+          <ScalarProperty Name="SATIŞ_FİYATI" ColumnName="SATIŞ FİYATI" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTSALES" FunctionName="WinkelModel.Store.LISTSALES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTSALES_Result">
+          <ScalarProperty Name="SATIŞ_ID_" ColumnName="SATIŞ ID " />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="KATEGORİ" ColumnName="KATEGORİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATIŞ_ADETİ" ColumnName="SATIŞ ADETİ" />
+          <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTSALESFORCUSTOMER" FunctionName="WinkelModel.Store.LISTSALESFORCUSTOMER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTSALESFORCUSTOMER_Result">
+          <ScalarProperty Name="SATIŞ_ID_" ColumnName="SATIŞ ID " />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="KATEGORİ" ColumnName="KATEGORİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATIŞ_ADETİ" ColumnName="SATIŞ ADETİ" />
+          <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTSALESFORSELLER" FunctionName="WinkelModel.Store.LISTSALESFORSELLER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTSALESFORSELLER_Result">
+          <ScalarProperty Name="SATIŞ_ID_" ColumnName="SATIŞ ID " />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="KATEGORİ" ColumnName="KATEGORİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATIŞ_ADETİ" ColumnName="SATIŞ ADETİ" />
+          <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTSELLER" FunctionName="WinkelModel.Store.LISTSELLER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.LISTSELLER_Result">
+          <ScalarProperty Name="SATICI_ID_" ColumnName="SATICI ID " />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ŞİFRE" ColumnName="ŞİFRE" />
+          <ScalarProperty Name="ŞEHİR" ColumnName="ŞEHİR" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="READNOTIFICATION" FunctionName="WinkelModel.Store.READNOTIFICATION" />
+    <FunctionImportMapping FunctionImportName="SEARCHCUSTOMER" FunctionName="WinkelModel.Store.SEARCHCUSTOMER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.SEARCHCUSTOMER_Result">
+          <ScalarProperty Name="MÜŞTERİ_ID" ColumnName="MÜŞTERİ ID" />
+          <ScalarProperty Name="MÜŞTERİ_ADI" ColumnName="MÜŞTERİ ADI" />
+          <ScalarProperty Name="MÜŞTERİ_SOYADI" ColumnName="MÜŞTERİ SOYADI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ŞİFRE" ColumnName="ŞİFRE" />
+          <ScalarProperty Name="ŞEHİR" ColumnName="ŞEHİR" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SEARCHPRODUCT" FunctionName="WinkelModel.Store.SEARCHPRODUCT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.SEARCHPRODUCT_Result">
+          <ScalarProperty Name="ÜRÜN_ID" ColumnName="ÜRÜN ID" />
+          <ScalarProperty Name="ÜRÜN_KATEGORİSİ" ColumnName="ÜRÜN KATEGORİSİ" />
+          <ScalarProperty Name="ÜRÜN_KODU" ColumnName="ÜRÜN KODU" />
+          <ScalarProperty Name="ÜRÜN_ADI" ColumnName="ÜRÜN ADI" />
+          <ScalarProperty Name="HACİM" ColumnName="HACİM" />
+          <ScalarProperty Name="BİRİM" ColumnName="BİRİM" />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="STOK_ADETİ" ColumnName="STOK ADETİ" />
+          <ScalarProperty Name="SATIŞ_FİYATI" ColumnName="SATIŞ FİYATI" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SEARCHSELLER" FunctionName="WinkelModel.Store.SEARCHSELLER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.SEARCHSELLER_Result">
+          <ScalarProperty Name="SATICI_ID_" ColumnName="SATICI ID " />
+          <ScalarProperty Name="SATICI_ADI" ColumnName="SATICI ADI" />
+          <ScalarProperty Name="SATICI_SOYADI" ColumnName="SATICI SOYADI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ŞİFRE" ColumnName="ŞİFRE" />
+          <ScalarProperty Name="ŞEHİR" ColumnName="ŞEHİR" />
+          <ScalarProperty Name="FOTOĞRAF" ColumnName="FOTOĞRAF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WinkelModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WinkelModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WinkelModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WinkelModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WinkelModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WinkelModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WinkelModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WinkelModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
