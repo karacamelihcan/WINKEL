@@ -65,5 +65,33 @@ namespace Winkel.Services
                 return dataAccess.SaveChanges();
             }
         }
+        
+        public bool Delete(Customer customer)
+        {
+            using(DataAccess dataAccess=new DataAccess())
+            {
+                var customerdeleted = dataAccess.Customers.Where(x => x.CustomerID == customer.CustomerID)
+                                                        .FirstOrDefault<Customer>();
+                customerdeleted.StatusID = false;
+                dataAccess.Update(customerdeleted);
+                return dataAccess.SaveChanges() > 0;
+            }
+        }
+        public bool Update(Customer customer)
+        {
+            using(DataAccess dataAccess=new DataAccess())
+            {
+                var customerUpdated = dataAccess.Customers.Where(x => x.CustomerID == customer.CustomerID)
+                                                        .FirstOrDefault<Customer>();
+                customerUpdated.Name = customer.Name;
+                customerUpdated.Surname = customer.Surname;
+                customerUpdated.Email = customer.Email;
+                customerUpdated.Password = customer.Password;
+                customerUpdated.CityID = customer.CityID;
+                customerUpdated.Photo = customer.Photo;
+                dataAccess.Update(customerUpdated);
+                return dataAccess.SaveChanges()>0;
+            }
+        }
     }
 }

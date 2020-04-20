@@ -14,5 +14,7 @@ namespace Winkel.Services
         List<CustomerInnerJoin> GetCustomer();
         bool LogIn(Customer customer);
         int Register(Customer customer);
+        bool Delete(Customer customer);
+        bool Update(Customer customer);
     }
 }

@@ -18,13 +18,13 @@ namespace Winkel
         {
             InitializeComponent();
         }
-        
+        ICustomerService customerService = new CustomerService();
+        ICityService cityService = new CityService();
         private void button1_Click(object sender, EventArgs e)
         {
 
             try
             {
-                ICustomerService customerService = new CustomerService();
                 dataGridView1.DataSource = customerService.GetCustomer();   
             }
             catch (Exception ex)
@@ -71,8 +71,6 @@ namespace Winkel
             try
             {
                 Customer customer = new Customer();
-                ICustomerService customerService = new CustomerService();
-                ICityService cityService = new CityService();
                 customer.Name = tbName.Text.ToUpper();
                 customer.Surname = tbSurname.Text.ToUpper();
                 customer.Email = tbEmail.Text;
@@ -80,7 +78,7 @@ namespace Winkel
                 customer.CityID = cityService.GetCityID(comboBox1.Text);
                 customer.Photo = tbPhoto.Text;
                 customerService.Register(customer);
-
+                dataGridView1.DataSource = customerService.GetCustomer();
 
             }
             catch (Exception ex)
@@ -95,7 +93,6 @@ namespace Winkel
             try
             {
                 Customer customer = new Customer();
-                ICustomerService customerService = new CustomerService();
                 ICityService cityService = new CityService();
                 customer.Email = tbEmail.Text;
                 customer.Password = tbPassword.Text;
@@ -103,6 +100,7 @@ namespace Winkel
                 {
                     lblLogin.Text = "Log in is successfull!";
                     lblLogin.ForeColor = Color.Green;
+                    
                 }
                 else
                 {
@@ -124,6 +122,68 @@ namespace Winkel
             var citylist = cityService.CityList();
             comboBox1.DataSource = citylist;
             comboBox1.DisplayMember = "CityName";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbID.Text!="")
+                {
+                    Customer customer = new Customer();
+                    customer.CustomerID = Convert.ToInt16(tbID.Text);
+                    if (customerService.Delete(customer))
+                    {
+                        MessageBox.Show("Silme işlemi başarılı");
+                        dataGridView1.DataSource = customerService.GetCustomer();
+                    }
+                    else
+                        MessageBox.Show("Böyle bir kayıt bulunmamaktadır");
+
+                }
+                else
+                    MessageBox.Show("Lütfen bir kayıt seçin");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbID.Text != "")
+                {
+                    Customer customer = new Customer();
+                    customer.CustomerID = Convert.ToInt16(tbID.Text);
+                    customer.Name = tbName.Text.ToUpper();
+                    customer.Surname = tbSurname.Text.ToUpper();
+                    customer.Email = tbEmail.Text;
+                    customer.Password = tbPassword.Text;
+                    customer.CityID = cityService.GetCityID(comboBox1.Text);
+                    customer.Photo = tbPhoto.Text;
+                    if (customerService.Update(customer)) 
+                    { 
+                        MessageBox.Show("Güncelleme başarılı");
+                        dataGridView1.DataSource = customerService.GetCustomer(); 
+                    }
+                else
+                    MessageBox.Show("Böyle bir kayıt bulunmamaktadır");
+                }
+                else
+                    MessageBox.Show("Lütfen bir kayıt seçin");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
