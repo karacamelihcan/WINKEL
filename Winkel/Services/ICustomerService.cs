@@ -16,5 +16,8 @@ namespace Winkel.Services
         int Register(Customer customer);
         bool Delete(Customer customer);
         bool Update(Customer customer);
+        List<CustomerInnerJoin> SearchCustomer(string query);
+        List<SalesListCustomer> PastOperations(Customer customer);
+
     }
 }

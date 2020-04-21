@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="Context\DataAccess.cs" />
     <Compile Include="InnerJoin\CustomerInnerJoin.cs" />
+    <Compile Include="InnerJoin\SalesListCustomer.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\City.cs" />

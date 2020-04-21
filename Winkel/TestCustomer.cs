@@ -151,7 +151,8 @@ namespace Winkel
             }
             
         }
-
+        
+        
         private void button5_Click(object sender, EventArgs e)
         {
             try
@@ -173,6 +174,46 @@ namespace Winkel
                     }
                 else
                     MessageBox.Show("Böyle bir kayıt bulunmamaktadır");
+                }
+                else
+                    MessageBox.Show("Lütfen bir kayıt seçin");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView1.DataSource = customerService.SearchCustomer(tbSearch.Text);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbID.Text != "")
+                {
+                    Customer customer = new Customer();
+                    customer.CustomerID = Convert.ToInt16(tbID.Text);
+                    dataGridView1.DataSource= customerService.PastOperations(customer);
                 }
                 else
                     MessageBox.Show("Lütfen bir kayıt seçin");

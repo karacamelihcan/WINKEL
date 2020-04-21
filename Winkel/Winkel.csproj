@@ -146,6 +146,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\AdminServices.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\IAdminService.cs" />
+    <Compile Include="Services\ICategoryService.cs" />
+    <Compile Include="TestAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestAdmin.Designer.cs">
+      <DependentUpon>TestAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestCategory.Designer.cs">
+      <DependentUpon>TestCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestCity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +180,12 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ICityService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
+    <EmbeddedResource Include="TestAdmin.resx">
+      <DependentUpon>TestAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestCategory.resx">
+      <DependentUpon>TestCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestCity.resx">
       <DependentUpon>TestCity.cs</DependentUpon>
     </EmbeddedResource>

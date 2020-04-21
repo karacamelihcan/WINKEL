@@ -82,3 +82,5 @@ D:\Winkel\Winkel\bin\Debug\Newtonsoft.Json.xml
 D:\Winkel\Winkel\bin\Debug\System.Text.Encodings.Web.xml
 D:\Winkel\Winkel\obj\Debug\Winkel.TestCity.resources
 D:\Winkel\Winkel\obj\Debug\Winkel.TestCustomer.resources
+D:\Winkel\Winkel\obj\Debug\Winkel.TestAdmin.resources
+D:\Winkel\Winkel\obj\Debug\Winkel.TestCategory.resources

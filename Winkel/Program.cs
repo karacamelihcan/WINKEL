@@ -16,7 +16,7 @@ namespace Winkel
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestCustomer());
+            Application.Run(new TestCategory());
         }
     }
 }
