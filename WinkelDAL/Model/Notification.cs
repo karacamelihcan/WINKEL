@@ -14,6 +14,6 @@ namespace WinkelDAL.Model
         [Key]
         public int NotfID { get; set; }
         public int SalesID { get; set; }
-        public bool ReadID { get; set; }
+        public bool ReadID { get; set; } = false;
     }
 }

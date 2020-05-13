@@ -14,7 +14,6 @@ namespace WinkelDAL.Context
         {
 
         }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -26,7 +25,7 @@ namespace WinkelDAL.Context
         public DbSet<Status> Status { get; set; }
         public DbSet<StockStatus> StockStatus { get; set; }
         public DbSet<Unit> Unit { get; set; }
-
+        public DbSet<ShoppingBasket> ShoppingBasket { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-7NN2PDN1\SQLEXPRESS;Initial Catalog=WinkelDB;Integrated Security=True");

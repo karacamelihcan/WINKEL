@@ -22,7 +22,7 @@ namespace WinkelDAL.Model
         public int StockNumber { get; set; }
         public decimal Price { get; set; }
         public string Photo { get; set; }
-        public bool StockID { get; set; }
-        public bool StatusID { get; set; }
+        public bool StockID { get; set; } = true;
+        public bool StatusID { get; set; } = true;
     }
 }

@@ -19,7 +19,7 @@ namespace WinkelDAL.Model
         public string Password { get; set; }
         public int CityID { get; set; }
         public string Photo { get; set; }
-        public bool StatusID { get; set; }
+        public bool StatusID { get; set; } = true;
 
     }
 }

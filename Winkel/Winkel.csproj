@@ -119,6 +119,7 @@
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -146,51 +147,189 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\AdminServices.cs" />
-    <Compile Include="Services\CategoryService.cs" />
-    <Compile Include="Services\IAdminService.cs" />
-    <Compile Include="Services\ICategoryService.cs" />
-    <Compile Include="TestAdmin.cs">
+    <Compile Include="Contracts\Request\Category\AddCategoryRequest.cs" />
+    <Compile Include="Contracts\Request\Category\CheckCategoryName.cs" />
+    <Compile Include="Contracts\Request\Category\GetCategoryIDRequest.cs" />
+    <Compile Include="Contracts\Request\City\CityIDRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerCheckEmailRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerDeleteRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerLogInRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerPastOperationRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerRegisterRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerSearchRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\CustomerUpdateRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\ForgotPasswordRequest.cs" />
+    <Compile Include="Contracts\Request\Customer\GetCustomerID.cs" />
+    <Compile Include="Contracts\Request\Customer\GetCustomerNameSurname.cs" />
+    <Compile Include="Contracts\Request\Notification\AddNotificationRequest.cs" />
+    <Compile Include="Contracts\Request\Notification\ReadNotificationRequest.cs" />
+    <Compile Include="Contracts\Request\Notification\SellerNotificationRequest.cs" />
+    <Compile Include="Contracts\Request\Notification\UnReadNotificationRequest.cs" />
+    <Compile Include="Contracts\Request\Product\AddProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\AllProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\CalculateCostRequest.cs" />
+    <Compile Include="Contracts\Request\Product\CheckProductExistRequest.cs" />
+    <Compile Include="Contracts\Request\Product\CheckStatusRequest.cs" />
+    <Compile Include="Contracts\Request\Product\DeleteASellerAllProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\DeleteProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\GetProductIDRequest.cs" />
+    <Compile Include="Contracts\Request\Product\SearchProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\SellerProductSearchRequest.cs" />
+    <Compile Include="Contracts\Request\Product\StockNumberRequest.cs" />
+    <Compile Include="Contracts\Request\Product\UpdateProductRequest.cs" />
+    <Compile Include="Contracts\Request\Product\UpdateStockNumberRequest.cs" />
+    <Compile Include="Contracts\Request\Sales\AddSalesRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\ForgotPasswordRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\GetSellerID.cs" />
+    <Compile Include="Contracts\Request\Seller\GetSellerNameSurname.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerCheckEmailRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerDeleteRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerLogInRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerPastOperationRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerRegisterRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerSearchRequest.cs" />
+    <Compile Include="Contracts\Request\Seller\SellerUpdateRequest.cs" />
+    <Compile Include="Contracts\Request\ShoppingBasket\AddShoppingBasketRequest.cs" />
+    <Compile Include="Contracts\Request\ShoppingBasket\ClearAllShoppingList.cs" />
+    <Compile Include="Contracts\Request\ShoppingBasket\ClearShoppingListRequest.cs" />
+    <Compile Include="Contracts\Request\ShoppingBasket\ShoppingListRequest.cs" />
+    <Compile Include="Contracts\Request\StockStatus\GetStockStatusIDRequest.cs" />
+    <Compile Include="Contracts\Request\Unit\UnitIDRequest.cs" />
+    <Compile Include="Contracts\Response\Category\CategoryListResponse.cs" />
+    <Compile Include="Contracts\Response\City\CityListResponse.cs" />
+    <Compile Include="Contracts\Response\Customer\CustomerListResponse.cs" />
+    <Compile Include="Contracts\Response\Customer\CustomerPastOpearitonResponse.cs" />
+    <Compile Include="Contracts\Response\Customer\CustomerInfoResponse.cs" />
+    <Compile Include="Contracts\Response\Notification\NotificationListResponse.cs" />
+    <Compile Include="Contracts\Response\Product\ActiveProductListResponse.cs" />
+    <Compile Include="Contracts\Response\Product\AllProductListResponse.cs" />
+    <Compile Include="Contracts\Response\Product\SellerProductResponse.cs" />
+    <Compile Include="Contracts\Response\Seller\SellerInformationResponse.cs" />
+    <Compile Include="Contracts\Response\Seller\SellerListResponse.cs" />
+    <Compile Include="Contracts\Response\Seller\SellerPastOpearitonResponse.cs" />
+    <Compile Include="Contracts\Response\ShoppingBasket\ShoppingBasketResponse.cs" />
+    <Compile Include="Contracts\Response\StockStatus\ListStockStatus.cs" />
+    <Compile Include="Contracts\Response\Unit\UnitListResponse.cs" />
+    <Compile Include="CustomerHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestAdmin.Designer.cs">
-      <DependentUpon>TestAdmin.cs</DependentUpon>
+    <Compile Include="CustomerHomePage.Designer.cs">
+      <DependentUpon>CustomerHomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestCategory.cs">
+    <Compile Include="DiscoverProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestCategory.Designer.cs">
-      <DependentUpon>TestCategory.cs</DependentUpon>
+    <Compile Include="DiscoverProduct.Designer.cs">
+      <DependentUpon>DiscoverProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestCity.cs">
+    <Compile Include="ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestCity.Designer.cs">
-      <DependentUpon>TestCity.cs</DependentUpon>
+    <Compile Include="ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestCustomer.cs">
+    <Compile Include="MainLogIN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestCustomer.Designer.cs">
-      <DependentUpon>TestCustomer.cs</DependentUpon>
+    <Compile Include="MainLogIN.Designer.cs">
+      <DependentUpon>MainLogIN.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotificationScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificationScreen.Designer.cs">
+      <DependentUpon>NotificationScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PastOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PastOperations.Designer.cs">
+      <DependentUpon>PastOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSettingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSettingScreen.Designer.cs">
+      <DependentUpon>ProductSettingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfilSettings.Designer.cs">
+      <DependentUpon>ProfilSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerHomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerHomePage.Designer.cs">
+      <DependentUpon>SellerHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRegister.Designer.cs">
+      <DependentUpon>NewRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SalesServices\ISalesService.cs" />
+    <Compile Include="Services\SalesServices\SalesService.cs" />
+    <Compile Include="Services\ShoppingBasketServices\IShoppingBasketService.cs" />
+    <Compile Include="Services\ShoppingBasketServices\ShoppingBasketService.cs" />
+    <Compile Include="Services\StockStatusServices\IStockStatusService.cs" />
+    <Compile Include="Services\StockStatusServices\StockStatusService.cs" />
+    <Compile Include="ShoppingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShoppingList.Designer.cs">
+      <DependentUpon>ShoppingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CategoryService\CategoryService.cs" />
+    <Compile Include="Services\CategoryService\ICategoryService.cs" />
+    <Compile Include="Services\NotificationService\INotificationService.cs" />
+    <Compile Include="Services\ProductServices\IProductService.cs" />
+    <Compile Include="Services\ProductServices\ProductService.cs" />
+    <Compile Include="Services\SellerService\ISellerService.cs" />
+    <Compile Include="Services\NotificationService\NotificationService.cs" />
+    <Compile Include="Services\SellerService\SellerService.cs" />
+    <Compile Include="Services\UnitServices\UnitService.cs" />
+    <Compile Include="Services\UnitServices\IUnitService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CityService.cs" />
-    <Compile Include="Services\CustomerService.cs" />
-    <Compile Include="Services\ICityService.cs" />
-    <Compile Include="Services\ICustomerService.cs" />
-    <EmbeddedResource Include="TestAdmin.resx">
-      <DependentUpon>TestAdmin.cs</DependentUpon>
+    <Compile Include="Services\CityService\CityService.cs" />
+    <Compile Include="Services\CustomerService\CustomerService.cs" />
+    <Compile Include="Services\CityService\ICityService.cs" />
+    <Compile Include="Services\CustomerService\ICustomerService.cs" />
+    <EmbeddedResource Include="CustomerHomePage.resx">
+      <DependentUpon>CustomerHomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestCategory.resx">
-      <DependentUpon>TestCategory.cs</DependentUpon>
+    <EmbeddedResource Include="DiscoverProduct.resx">
+      <DependentUpon>DiscoverProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestCity.resx">
-      <DependentUpon>TestCity.cs</DependentUpon>
+    <EmbeddedResource Include="ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestCustomer.resx">
-      <DependentUpon>TestCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="MainLogIN.resx">
+      <DependentUpon>MainLogIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationScreen.resx">
+      <DependentUpon>NotificationScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PastOperations.resx">
+      <DependentUpon>PastOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSettingScreen.resx">
+      <DependentUpon>ProductSettingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfilSettings.resx">
+      <DependentUpon>ProfilSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerHomePage.resx">
+      <DependentUpon>SellerHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewRegister.resx">
+      <DependentUpon>NewRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShoppingList.resx">
+      <DependentUpon>ShoppingList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -221,6 +360,7 @@
       <Name>WinkelDAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

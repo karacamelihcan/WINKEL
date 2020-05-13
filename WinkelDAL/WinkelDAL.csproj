@@ -135,9 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DataAccess.cs" />
-    <Compile Include="InnerJoin\CustomerInnerJoin.cs" />
-    <Compile Include="InnerJoin\SalesListCustomer.cs" />
-    <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\City.cs" />
     <Compile Include="Model\Customer.cs" />
@@ -146,6 +143,7 @@
     <Compile Include="Model\ReadStatus.cs" />
     <Compile Include="Model\Sales.cs" />
     <Compile Include="Model\Seller.cs" />
+    <Compile Include="Model\ShoppingBasket.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\StockStatus.cs" />
     <Compile Include="Model\Unit.cs" />
